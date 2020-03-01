@@ -11,12 +11,27 @@ class App extends React.Component {
       result: ""
     }
   }
+
+  onClick = (button) => {
+    if(button = "C") {
+      this.reset();
+    }
+  }
   
+  reset = () => {
+    this.setState({
+      result: ""
+    })
+  };
+
   render() {
     return(
       <div>
-        <ResultComponent />
-        <KeypadComponent />
+        <div className="calculator-body">
+          <h1>Calculator</h1>
+          <ResultComponent result={this.state.result}/>
+          <KeypadComponent onClick={this.onClick}/>
+        </div>
       </div>
     )
   }
