@@ -13,14 +13,34 @@ class App extends React.Component {
   }
 
   onClick = (button) => {
-    if(button = "C") {
+    if(button === "C") {
       this.reset();
+    } else if (button === "CE") {
+      this.backspace();
+    } else if(button === "=") {
+      this.calculate();
+    }
+  }
+
+  calculate = () => {
+    try {
+      this.setState({
+        result: (eval(this.state.result) || "") + ""
+      })
+    } catch(e) {
+
     }
   }
   
   reset = () => {
     this.setState({
       result: ""
+    })
+  };
+
+  backspace = () => {
+    this.setState({
+      result: this.state.result.slice(0, -1)
     })
   };
 
