@@ -28,7 +28,9 @@ class App extends React.Component {
         result: (eval(this.state.result) || "") + ""
       })
     } catch(e) {
-
+      this.setState({
+        result: "Error"
+      })
     }
   }
   
