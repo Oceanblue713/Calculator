@@ -13,18 +13,19 @@ class App extends React.Component {
   }
 
   onClick = (button) => {
-    if(button === "C") {
-      this.reset();
-    } else if (button === "CE") {
-      this.backspace();
-    } else if(button === "=") {
+    if(button === "=") {
       this.calculate();
+    } else if (button === "C") {
+      this.reset();
+    } else if(button === "CE") {
+      this.backspace();
     }
   }
 
   calculate = () => {
     try {
       this.setState({
+        // eslint-disable-next-line no-eval
         result: (eval(this.state.result) || "") + ""
       })
     } catch(e) {
@@ -51,7 +52,7 @@ class App extends React.Component {
       <div>
         <div className="calculator-body">
           <h1>Calculator</h1>
-          <ResultComponent result={this.state.result}/>
+          <ResultComponent result={this.state.result} />
           <KeypadComponent onClick={this.onClick}/>
         </div>
       </div>
